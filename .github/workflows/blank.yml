@@ -12,13 +12,12 @@ jobs:
 
     - name: sending email
       if: ${{ always() }}
-      uses: devellany/send-mailer@v1.0.2
+      uses: devellany/send-mailer@v3
       with:
         host: smtp.google.com
         port: 465
         account: ${{secrets.ACCOUNT}}
         password: ${{secrets.MAIL_PASSWORD}}
-        sender: Github
         from: ${{secrets.MAIL_ADDRESS}}
         to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
         subject: mail check
