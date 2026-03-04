@@ -7,4 +7,12 @@ jobs:
 
     steps:
     - name: run hello world
-      run: echo "hello world"
+      uses: actions/checkout@v6
+
+    - name:  setup python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13' 
+        
+    - name: Run py script
+      run: python hello.py
