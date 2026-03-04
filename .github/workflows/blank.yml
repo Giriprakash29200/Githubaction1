@@ -20,5 +20,5 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Mail Check
           to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
-          from: ${{ secrets.MAIL_ADDRESS }}
+          from: ${{ secrets.MAIL_ADDR }}
           body: Mail check from GitHub Actions
