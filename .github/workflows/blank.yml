@@ -1,18 +1,27 @@
-name: Hello world print
-on: push 
+name: send email
+on: push
 
 jobs:
-  Hello:
+  mail:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: run hello world
-      uses: actions/checkout@v6
 
-    - name:  setup python
-      uses: actions/setup-python@v6
+    steps:
+    - name: message for email
+      run: echo "hello team"
+
+    - name: sending email
+      if: ${{ always() }}
+      uses: devellany/send-mailer@v1.0.2
       with:
-        python-version: '3.13' 
-        
-    - name: Run py script
-      run: python hello.py
+        host: smtp.google.com
+        port: 465
+        account: ${{secrets.ACCOUNT}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        sender: Github
+        from: ${{secrets.MAIL_ADDRESS}}
+        to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
+        subject: mail check
+        body: mail check
+        contentType: text/plain
+      
