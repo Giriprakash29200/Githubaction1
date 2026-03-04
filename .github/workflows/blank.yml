@@ -5,7 +5,6 @@ jobs:
   mail:
     runs-on: ubuntu-latest
 
-
     steps:
     - name: message for email
       run: echo "hello team"
