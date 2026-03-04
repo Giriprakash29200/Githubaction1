@@ -12,7 +12,7 @@ jobs:
 
     - name: sending email
       if: ${{ always() }}
-      uses: dawidd6/action-send-mail@<REF>
+      uses: dawidd6/action-send-mail@v3
       with:
         host: smtp.google.com
         port: 465
