@@ -1,10 +1,27 @@
-name: Hello world print
-on: push 
+name: send email
+on: push
 
 jobs:
-  Hello:
+  mail:
     runs-on: ubuntu-latest
 
+
     steps:
-    - name: run hello world
-      run: echo "hello world"
+    - name: message for email
+      run: echo "hello team"
+
+    - name: sending email
+      if: ${{ always() }}
+      uses: devellany/send-mailer@v1.0.2
+      with:
+        host: smtp.google.com
+        port: 465
+        account: ${{secrets.ACCOUNT}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        sender: Github
+        from: ${{secrets.MAIL_ADDRESS}}
+        to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
+        subject: mail check
+        body: mail check
+        contentType: text/plain
+      
