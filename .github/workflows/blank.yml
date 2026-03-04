@@ -1,4 +1,5 @@
 name: send email
+
 on: push
 
 jobs:
@@ -6,20 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: message for email
-      run: echo "hello team"
+      - name: message for email
+        run: echo "hello team"
 
-    - name: sending email
-      if: ${{ always() }}
-      uses: dawidd6/action-send-mail@v3
-      with:
-        host: smtp.google.com
-        port: 465
-        account: ${{secrets.ACCOUNT}}
-        password: ${{secrets.MAIL_PASSWORD}}
-        from: ${{secrets.MAIL_ADDRESS}}
-        to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
-        subject: mail check
-        body: mail check
-        contentType: text/plain
-      
+      - name: sending email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.ACCOUNT }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Mail Check
+          to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
+          from: ${{ secrets.MAIL_ADDRESS }}
+          body: Mail check from GitHub Actions
