@@ -21,4 +21,24 @@ jobs:
           subject: Mail Check
           to: giriprakash29200@gmail.com, giriprakash.aws@gmail.com
           from: ${{ secrets.MAIL_ADDR }}
-          body: Mail check from GitHub Actions
+          body: |
+          
+            Hello Team,
+
+            This Mail From Devops Team, Please Check the mail and reply to me.
+
+            You are upload file in Given Repo,
+
+            Repository: ${{github.repository}}
+            Branch: ${{github.ref}}
+            Commit Message: ${{github.event.head_commit.message}}
+            author: ${{github.event.head_commit.author.name}}
+
+            commit URL:
+            https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+
+            Thanks & Regards,
+            Devops Team
+            
+
+
